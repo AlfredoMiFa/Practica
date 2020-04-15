@@ -18,7 +18,7 @@ public class FilterFunction {
 		List<R> result = new ArrayList<>();
 		for(T t: list) {
 			result.add(f.apply(t));
-		}
+		} 
 		return result;
 	}
 	
