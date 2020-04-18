@@ -39,7 +39,7 @@ public class AppleComparator implements Comparator<Apple> {
 	
 	public List<Apple> methodReference(List<Apple> list) {
 		log.info("methodReference");
-		list.sort(comparing(Apple::getWeight));
+		list.sort(comparing(Apple::getWeight).thenComparing(Apple::getColor));
 		return list;
 	}
 }

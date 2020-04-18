@@ -45,7 +45,7 @@ public class PracticaApplicationTests {
 	
 	@Test
 	public void contextLoads() {
-		List<Apple> list = Arrays.asList(new Apple("red",4),new Apple("green",5),new Apple("yellow",23));
+		List<Apple> list = Arrays.asList(new Apple("red",4),new Apple("green",5),new Apple("yellow",23),new Apple("blue",23));
 		comparator.anonynusClass(list);
 		list.forEach(t->log.info(t.toString()));
 		comparator.lambdaExpressions(list);
