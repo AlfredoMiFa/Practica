@@ -1,13 +1,20 @@
 package com.mistborn;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mistborn.consumer.ImplementationConsumer;
+import com.mistborn.entity.Apple;
 import com.mistborn.function.ImplementationFunction;
+import com.mistborn.implement.capsTwoAndThree.AppleComparator;
 import com.mistborn.lambda.inference.LambdaInference;
 import com.mistborn.predicate.ImplementationPredicate;
 import com.mistborn.unboxing.ImplementationIntPredicate;
@@ -15,6 +22,8 @@ import com.mistborn.unboxing.ImplementationIntPredicate;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PracticaApplicationTests {
+	
+	private static final Logger log = LoggerFactory.getLogger(PracticaApplicationTests.class);
 	
 	@Autowired
 	private ImplementationPredicate predicate;
@@ -30,15 +39,19 @@ public class PracticaApplicationTests {
 	
 	@Autowired
 	private LambdaInference lambda;
-
+	
+	@Autowired
+	private AppleComparator comparator;
+	
 	@Test
 	public void contextLoads() {
-		predicate.predicate();
-		consumer.imprime();
-		function.imprime();
-		intPredicate.numberPar();
-		intPredicate.numberPar1();
-		lambda.notInference();
+		List<Apple> list = Arrays.asList(new Apple("red",4),new Apple("green",5),new Apple("yellow",23));
+		comparator.anonynusClass(list);
+		list.forEach(t->log.info(t.toString()));
+		comparator.lambdaExpressions(list);
+		list.forEach(t->log.info(t.toString()));
+		comparator.methodReference(list);
+		list.forEach(t->log.info(t.toString()));
 	}
 
 }
