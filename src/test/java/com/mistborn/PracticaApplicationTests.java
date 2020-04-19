@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.mistborn.composeandthen.ComposeFunction;
 import com.mistborn.consumer.ImplementationConsumer;
 import com.mistborn.entity.Apple;
 import com.mistborn.function.ImplementationFunction;
@@ -43,15 +44,13 @@ public class PracticaApplicationTests {
 	@Autowired
 	private AppleComparator comparator;
 	
+	@Autowired
+	private ComposeFunction composeFunction;
+	
 	@Test
 	public void contextLoads() {
-		List<Apple> list = Arrays.asList(new Apple("red",4),new Apple("green",5),new Apple("yellow",23),new Apple("blue",23));
-		comparator.anonynusClass(list);
-		list.forEach(t->log.info(t.toString()));
-		comparator.lambdaExpressions(list);
-		list.forEach(t->log.info(t.toString()));
-		comparator.methodReference(list);
-		list.forEach(t->log.info(t.toString()));
+		composeFunction.andThen();
+		composeFunction.composeFunction();
 	}
 
 }
